@@ -23,3 +23,6 @@ Notes:
 - Monorepo:
     - Individual services maintain their own version
     - Releases are tagged to maintain system version
+
+Credit:
+Some Travis monorepo code from here: https://github.com/sagikazarmark/travis-monorepo-demo
