@@ -1,0 +1,3 @@
+[submodule "projects/cop-watch-portal"]
+	path = projects/cop-watch-portal
+	url = https://github.com/Ricool06/cop-watch-portal.git
