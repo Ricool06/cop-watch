@@ -16,5 +16,6 @@ deploy:
   env: cop-watch-production-environment
   bucket_name: cop-watch-production-bucket
   zip_file: $BEANSTALK_ZIP_FILENAME
+  skip_cleanup: true
   on:
     tags: true
