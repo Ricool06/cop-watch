@@ -1,12 +1,20 @@
 language: generic
 
-services:
-  - docker
+env:
+  global:
+    - BEANSTALK_ZIP_FILENAME=dockerrun.zip
 
-jobs:
-  include:
-    - stage: test and build in docker
-      script: if .travis/has-changed.sh $TRAVIS_COMMIT_RANGE projects/portal; then docker build -t portal projects/portal; fi
-    - stage: deploy
-      script: docker images # This is a test command for now
-      if: branch = master AND tag IS present
+before_deploy:
+- ./.travis/create-dockerrun-file.sh
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: eu-west-1
+  app: cop-watch-app
+  env: cop-watch-production-environment
+  bucket_name: cop-watch-production-bucket
+  zip_file: $BEANSTALK_ZIP_FILENAME
+  on:
+    tags: true
