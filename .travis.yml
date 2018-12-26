@@ -14,7 +14,7 @@ deploy:
   region: eu-west-1
   app: cop-watch-app
   env: cop-watch-production-environment
-  bucket_name: cop-watch-production-bucket
+  bucket_name: elasticbeanstalk-eu-west-1-106887332414
   zip_file: $BEANSTALK_ZIP_FILENAME
   skip_cleanup: true
   on:
