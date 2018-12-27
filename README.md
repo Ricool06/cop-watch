@@ -1,7 +1,15 @@
 # Cop Watch
 Project for SOFT352. Users can visually explore police data from stop and search to crime outcomes.
 
-Potntial features:
+Running a local environment:
+- Setup the aws cli
+- Set up the elastic beanstalk cli
+- Run `eb init` and go through options
+- Run `./.travis/create-dockerrun-file.sh` to create the Dockerrun.aws.json file
+- Run `eb local run`
+- Hey presto!
+
+Potential features:
 - Explore local areas for:
     - Stop and searches
     - Crime outcomes
