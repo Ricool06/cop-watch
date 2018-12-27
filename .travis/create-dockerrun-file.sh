@@ -46,7 +46,7 @@ cat << EOF > Dockerrun.aws.json
         },
         {
           "name": "VIRTUAL_PORT",
-          "value": 80
+          "value": 8080
         }
       ],
       "links": [
