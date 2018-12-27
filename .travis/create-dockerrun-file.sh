@@ -48,6 +48,9 @@ cat << EOF > Dockerrun.aws.json
           "name": "VIRTUAL_PORT",
           "value": 80
         }
+      ],
+      "links": [
+        "reverse-proxy"
       ]
     }
   ]
