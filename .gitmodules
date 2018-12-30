@@ -4,3 +4,6 @@
 [submodule "projects/cop-watch-data-proxy"]
 	path = projects/cop-watch-data-proxy
 	url = https://github.com/Ricool06/cop-watch-data-proxy.git
+[submodule "projects/cop-watch-api-gateway"]
+	path = projects/cop-watch-api-gateway
+	url = https://github.com/Ricool06/cop-watch-api-gateway.git
