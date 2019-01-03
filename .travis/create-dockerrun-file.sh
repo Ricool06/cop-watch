@@ -17,7 +17,7 @@ cat << EOF > Dockerrun.aws.json
   "containerDefinitions": [
     {
       "name": "reverse-proxy",
-      "image": "jwilder/nginx-proxy:alpine",
+      "image": "traefik:1.7.6-alpine",
       "essential": true,
       "memory": 128,
       "portMappings": [
@@ -29,29 +29,27 @@ cat << EOF > Dockerrun.aws.json
       "mountPoints": [
         {
           "sourceVolume": "docker-socket",
-          "containerPath": "/tmp/docker.sock",
+          "containerPath": "/var/run/docker.sock",
           "readOnly": true
         }
+      ],
+      "command": ["--docker"],
+      "links": [
+        "cop-watch-portal",
+        "cop-watch-api-gateway"
       ]
     },
     {
       "name": "cop-watch-portal",
       "image": "$DOCKER_USERNAME/cop-watch-portal:$(get_tag cop-watch-portal)",
       "essential": true,
-      "memory": 128,
-      "environment": [
-        {
-          "name": "VIRTUAL_HOST",
-          "value": "localhost,cop-watch-production-environment.egbk2sq3vn.eu-west-1.elasticbeanstalk.com"
-        },
-        {
-          "name": "VIRTUAL_PORT",
-          "value": 8080
-        }
-      ],
-      "links": [
-        "reverse-proxy"
-      ]
+      "memory": 128
+    },
+    {
+      "name": "cop-watch-api-gateway",
+      "image": "$DOCKER_USERNAME/cop-watch-api-gateway:$(get_tag cop-watch-api-gateway)",
+      "essential": true,
+      "memory": 128
     }
   ]
 }
