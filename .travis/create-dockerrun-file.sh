@@ -50,6 +50,15 @@ cat << EOF > Dockerrun.aws.json
       "image": "$DOCKER_USERNAME/cop-watch-api-gateway:$(get_tag cop-watch-api-gateway)",
       "essential": true,
       "memory": 128
+    },
+    {
+      "name": "cop-watch-data-proxy",
+      "image": "$DOCKER_USERNAME/cop-watch-data-proxy:$(get_tag cop-watch-data-proxy)",
+      "essential": true,
+      "memory": 128,
+      "links": [
+        "cop-watch-api-gateway"
+      ]
     }
   ]
 }
